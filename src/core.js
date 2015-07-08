@@ -1275,7 +1275,7 @@ $.extend( $.validator, {
 		equalTo: function( value, element, param ) {
 			// bind to the blur event of the target in order to revalidate whenever the target field is updated
 			// TODO find a way to bind the event just once, avoiding the unbind-rebind overhead
-			var target = $( param );
+			var target = $(this.currentForm).find(param); // Target the field inside the current form and not the page
 			if ( this.settings.onfocusout ) {
 				target.off( ".validate-equalTo" ).on( "blur.validate-equalTo", function() {
 					$( element ).valid();
